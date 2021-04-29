@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+// This code kind of works, but likely needs further modification
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -31,9 +32,7 @@
 
                         die("<h1>Relay not found! Cannot start.</h1>");
                         }
-//                $relays = zerificabinario( base_convert( $statorele, 16, 2 ) );
-//		echo( "<p>".$relays."</p>" );
-//                $arrRelays = str_split( $relays );
+
                 $arrRelaysTemp = str_split( $statorele );
                 $arrRelays = $arrRelaysTemp[1*5-1].$arrRelaysTemp[2*5-1].$arrRelaysTemp[3*5-1].$arrRelaysTemp[4*5-1];
 		echo $arrRelays;
@@ -49,15 +48,6 @@
                 if ($toggle == "Relay2on") shell_exec( 'sudo /usr/sbin/i2cset -y 1 0x10 0x02 0x01' );
                 if ($toggle == "Relay2off") shell_exec( 'sudo /usr/sbin/i2cset -y 1 0x10 0x02 0x00' );
 
-//                if (($toggle != "OnAll") && ($toggle != "OffAll"))
-//                {
-//                $toggle = ( substr( $toggle, -1, 1 ) ) - 1;
-//                $changedValue = ( 0 == $arrRelays[ $toggle ] ) ? '1' : '0';
-//                $arrRelays = array_replace( [], $arrRelays, [ $toggle => $changedValue ] );
-//                $newrelaystatus = base_convert(implode( $arrRelays ), 2, 16 );
-//                shell_exec( '/usr/sbin/i2cset -y 1 0x10 0x' . $newrelaystatus );
-//                }
-                // !!!!! change 0x23 with I2C addres of your relays board
                 caricastatorelays();
                 header( 'Location: ' . $_SERVER[ 'PHP_SELF' ] ); // make a redirect to empty post data. in case of reload of the page i don't wont to re-toggle last action
         }

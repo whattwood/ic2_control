@@ -4,7 +4,8 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Raspberry Pi Gpio</title>
+        <meta http-equiv="refresh" content="10" > //refresh page every 10 seconds
+        <title>Pi i2c Relay Control</title>
     </head>
  
     <body style="background-color: black;">
